@@ -6,7 +6,7 @@
     "with-env": "dotenv -e ../../.env --",
     "dev": "pnpm with-env next dev",
     "build": "next build",
-    "clean": "rm -rf .next .turbo node_modules",
+    "clean": "git clean -xdf .next .turbo node_modules",
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit"

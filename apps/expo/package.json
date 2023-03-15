@@ -6,7 +6,7 @@
     "with-env": "dotenv -e ../../.env --",
     "start": "pnpm with-env expo start",
     "dev": "pnpm with-env expo start --android",
-    "clean": "rm -rf .expo .turbo node_modules",
+    "clean": "git clean -xdf .expo .turbo node_modules",
     "android": "pnpm with-env expo start --android",
     "ios": "pnpm with-env expo start --ios",
     "web": "pnpm with-env expo start --web",
