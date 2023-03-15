@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "main": "index.ts",
   "scripts": {
-    "start": "expo start",
-    "dev": "expo start --ios",
+    "with-env": "dotenv -e ../../.env --",
+    "start": "pnpm with-env expo start",
+    "dev": "pnpm with-env expo start --android",
     "clean": "rm -rf .expo .turbo node_modules",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
+    "android": "pnpm with-env expo start --android",
+    "ios": "pnpm with-env expo start --ios",
+    "web": "pnpm with-env expo start --web",
     "lint": "eslint . --ext ts,tsx"
   },
   "dependencies": {
