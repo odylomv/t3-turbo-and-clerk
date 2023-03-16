@@ -1,5 +1,6 @@
 {
   "$schema": "https://turborepo.org/schema.json",
+  "globalDependencies": ["**/.env"],
   "pipeline": {
     "db-generate": {
       "inputs": ["prisma/schema.prisma"],
@@ -17,9 +18,8 @@
       "dependsOn": ["^build", "^db-generate"],
       "outputs": [".next/**", ".expo/**"]
     },
-    "lint": {
-      "outputs": []
-    },
+    "lint": {},
+    "lint:fix": {},
     "clean": {
       "cache": false
     },
