@@ -1,13 +1,13 @@
-import React from "react";
-import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useAuth } from "@clerk/clerk-expo";
-import { FlashList } from "@shopify/flash-list";
-import type { inferProcedureOutput } from "@trpc/server";
+import React from 'react';
+import { Button, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useAuth } from '@clerk/clerk-expo';
+import { FlashList } from '@shopify/flash-list';
+import type { inferProcedureOutput } from '@trpc/server';
 
-import type { AppRouter } from "@acme/api";
+import type { AppRouter } from '@acme/api';
 
-import { api } from "../utils/api";
+import { api } from '../utils/api';
 
 const SignOut = () => {
   const { signOut } = useAuth();
@@ -24,7 +24,7 @@ const SignOut = () => {
 };
 
 const PostCard: React.FC<{
-  post: inferProcedureOutput<AppRouter["post"]["all"]>[number];
+  post: inferProcedureOutput<AppRouter['post']['all']>[number];
 }> = ({ post }) => {
   return (
     <View className="rounded-lg border-2 border-gray-500 p-4">
@@ -42,8 +42,8 @@ const CreatePost: React.FC = () => {
     },
   });
 
-  const [title, onChangeTitle] = React.useState("");
-  const [content, onChangeContent] = React.useState("");
+  const [title, onChangeTitle] = React.useState('');
+  const [content, onChangeContent] = React.useState('');
 
   return (
     <View className="flex flex-col border-t-2 border-gray-500 p-4">
@@ -90,9 +90,7 @@ export const HomeScreen = () => {
               {showPost}
             </Text>
           ) : (
-            <Text className="font-semibold italic text-white">
-              Press on a post
-            </Text>
+            <Text className="font-semibold italic text-white">Press on a post</Text>
           )}
         </View>
 
@@ -100,7 +98,7 @@ export const HomeScreen = () => {
           data={postQuery.data}
           estimatedItemSize={20}
           ItemSeparatorComponent={() => <View className="h-2" />}
-          renderItem={(p) => (
+          renderItem={p => (
             <TouchableOpacity onPress={() => setShowPost(p.item.id)}>
               <PostCard post={p.item} />
             </TouchableOpacity>

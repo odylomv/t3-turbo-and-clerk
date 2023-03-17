@@ -1,14 +1,11 @@
-import type {
-  SignedInAuthObject,
-  SignedOutAuthObject,
-} from "@clerk/nextjs/dist/api";
-import { getAuth } from "@clerk/nextjs/server";
-import { TRPCError, initTRPC } from "@trpc/server";
-import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
-import SuperJSON from "superjson";
-import { ZodError } from "zod";
+import type { SignedInAuthObject, SignedOutAuthObject } from '@clerk/nextjs/dist/api';
+import { getAuth } from '@clerk/nextjs/server';
+import { TRPCError, initTRPC } from '@trpc/server';
+import { type CreateNextContextOptions } from '@trpc/server/adapters/next';
+import SuperJSON from 'superjson';
+import { ZodError } from 'zod';
 
-import { prisma } from "@acme/db";
+import { prisma } from '@acme/db';
 
 /**
  * 1. CONTEXT
@@ -61,8 +58,7 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
       ...shape,
       data: {
         ...shape.data,
-        zodError:
-          error.cause instanceof ZodError ? error.cause.flatten() : null,
+        zodError: error.cause instanceof ZodError ? error.cause.flatten() : null,
       },
     };
   },
@@ -96,7 +92,7 @@ export const publicProcedure = t.procedure;
  */
 const enforceUserIsAuthed = t.middleware(({ next, ctx }) => {
   if (!ctx.auth || !ctx.auth.userId) {
-    throw new TRPCError({ code: "UNAUTHORIZED", message: "Not authenticated" });
+    throw new TRPCError({ code: 'UNAUTHORIZED', message: 'Not authenticated' });
   }
   return next({
     ctx: {

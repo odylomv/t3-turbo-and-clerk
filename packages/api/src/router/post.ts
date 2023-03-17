@@ -1,6 +1,6 @@
-import { z } from "zod";
+import { z } from 'zod';
 
-import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
+import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc';
 
 export const postRouter = createTRPCRouter({
   all: publicProcedure.query(({ ctx }) => {
@@ -9,9 +9,7 @@ export const postRouter = createTRPCRouter({
   byId: publicProcedure.input(z.string()).query(({ ctx, input }) => {
     return ctx.prisma.post.findFirst({ where: { id: input } });
   }),
-  create: protectedProcedure
-    .input(z.object({ title: z.string(), content: z.string() }))
-    .mutation(({ ctx, input }) => {
-      return ctx.prisma.post.create({ data: input });
-    }),
+  create: protectedProcedure.input(z.object({ title: z.string(), content: z.string() })).mutation(({ ctx, input }) => {
+    return ctx.prisma.post.create({ data: input });
+  }),
 });

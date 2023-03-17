@@ -1,18 +1,16 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import Link from "next/link";
-import { UserButton, useAuth } from "@clerk/nextjs";
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Link from 'next/link';
+import { UserButton, useAuth } from '@clerk/nextjs';
 
-import { api, type RouterOutputs } from "~/utils/api";
+import { api, type RouterOutputs } from '~/utils/api';
 
 const PostCard: React.FC<{
-  post: RouterOutputs["post"]["all"][number];
+  post: RouterOutputs['post']['all'][number];
 }> = ({ post }) => {
   return (
     <div className="max-w-2xl rounded-lg border-2 border-gray-500 p-4 transition-all hover:scale-[101%]">
-      <h2 className="text-2xl font-bold text-[hsl(280,100%,70%)]">
-        {post.title}
-      </h2>
+      <h2 className="text-2xl font-bold text-[hsl(280,100%,70%)]">{post.title}</h2>
       <p>{post.content}</p>
     </div>
   );
@@ -38,7 +36,7 @@ const Home: NextPage = () => {
           <div className="flex h-[60vh] justify-center overflow-y-scroll px-4 text-2xl">
             {postQuery.data ? (
               <div className="flex flex-col gap-4">
-                {postQuery.data?.map((p) => {
+                {postQuery.data?.map(p => {
                   return <PostCard key={p.id} post={p} />;
                 })}
               </div>
@@ -56,10 +54,7 @@ export default Home;
 
 const AuthShowcase: React.FC = () => {
   const { isSignedIn } = useAuth();
-  const { data: secretMessage } = api.auth.getSecretMessage.useQuery(
-    undefined,
-    { enabled: !!isSignedIn },
-  );
+  const { data: secretMessage } = api.auth.getSecretMessage.useQuery(undefined, { enabled: !!isSignedIn });
 
   return (
     <div className="flex flex-col items-center justify-center gap-4">
@@ -68,7 +63,7 @@ const AuthShowcase: React.FC = () => {
           <p className="text-center text-2xl text-white">
             {secretMessage && (
               <span>
-                {" "}
+                {' '}
                 {secretMessage} click the user button!
                 <br />
               </span>
@@ -79,8 +74,8 @@ const AuthShowcase: React.FC = () => {
               appearance={{
                 elements: {
                   userButtonAvatarBox: {
-                    width: "3rem",
-                    height: "3rem",
+                    width: '3rem',
+                    height: '3rem',
                   },
                 },
               }}
