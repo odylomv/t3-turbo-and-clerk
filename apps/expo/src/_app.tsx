@@ -1,13 +1,13 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { TRPCProvider } from "./utils/trpc";
+import Constants from "expo-constants";
+import { StatusBar } from "expo-status-bar";
+import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
 
 import { HomeScreen } from "./screens/home";
 import { SignInSignUpScreen } from "./screens/signin";
-import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
+import { TRPCProvider } from "./utils/api";
 import { tokenCache } from "./utils/cache";
-import Constants from "expo-constants";
 
 export const App = () => {
   return (

@@ -6,18 +6,20 @@
   "license": "MIT",
   "scripts": {
     "clean": "git clean -xdf .turbo node_modules",
-    "lint": "eslint . --ext .ts,.tsx",
+    "lint": "eslint .",
+    "lint:fix": "pnpm lint --fix",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@acme/db": "*",
-    "@trpc/client": "^10.1.0",
-    "@trpc/server": "^10.1.0",
-    "superjson": "^1.9.1",
-    "zod": "^3.18.0"
+    "@trpc/client": "^10.16.0",
+    "@trpc/server": "^10.16.0",
+    "superjson": "^1.12.2",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
-    "eslint": "^8.28.0",
-    "typescript": "^4.9.3"
+    "eslint": "^8.36.0",
+    "eslint-config-acme": "0.0.0",
+    "typescript": "^4.9.5"
   }
 }

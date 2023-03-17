@@ -1,24 +1,27 @@
-import { createTRPCReact } from "@trpc/react-query";
-import type { AppRouter } from "@acme/api";
-/**
- * Extend this function when going to production by
- * setting the baseUrl to your production API URL.
- */
-import Constants from "expo-constants";
 /**
  * A wrapper for your app that provides the TRPC context.
  * Use only in _app.tsx
  */
+
 import React from "react";
+import Constants from "expo-constants";
+/**
+ * Extend this function when going to production by
+ * setting the baseUrl to your production API URL.
+ */
+import { useAuth } from "@clerk/clerk-expo";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
-import { transformer } from "@acme/api/transformer";
-import { useAuth } from "@clerk/clerk-expo";
+import { createTRPCReact } from "@trpc/react-query";
+import SuperJSON from "superjson";
+
+import type { AppRouter } from "@acme/api";
 
 /**
  * A set of typesafe hooks for consuming your API.
  */
-export const trpc = createTRPCReact<AppRouter>();
+export const api = createTRPCReact<AppRouter>();
+export { type RouterInputs, type RouterOutputs } from "@acme/api";
 
 const getBaseUrl = () => {
   /**
@@ -38,8 +41,8 @@ export const TRPCProvider: React.FC<{
   const { getToken } = useAuth();
   const [queryClient] = React.useState(() => new QueryClient());
   const [trpcClient] = React.useState(() =>
-    trpc.createClient({
-      transformer,
+    api.createClient({
+      transformer: SuperJSON,
       links: [
         httpBatchLink({
           async headers() {
@@ -55,8 +58,8 @@ export const TRPCProvider: React.FC<{
   );
 
   return (
-    <trpc.Provider client={trpcClient} queryClient={queryClient}>
+    <api.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    </trpc.Provider>
+    </api.Provider>
   );
 };
