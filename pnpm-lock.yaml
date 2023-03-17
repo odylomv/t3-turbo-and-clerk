@@ -46,6 +46,7 @@ importers:
       '@trpc/server': ^10.16.0
       '@types/react': ^18.0.28
       '@types/react-native': ~0.70.6
+      '@types/webpack-env': ^1.18.0
       eslint: ^8.36.0
       eslint-config-acme: 0.0.0
       expo: ~47.0.12
@@ -90,6 +91,7 @@ importers:
       '@babel/runtime': 7.21.0
       '@types/react': 18.0.28
       '@types/react-native': 0.70.8
+      '@types/webpack-env': 1.18.0
       eslint: 8.36.0
       eslint-config-acme: link:../../packages/config/eslint
       postcss: 8.4.21
@@ -3107,6 +3109,10 @@ packages:
       '@types/mime': 3.0.1
       '@types/node': 18.15.3
     dev: false
+
+  /@types/webpack-env/1.18.0:
+    resolution: {integrity: sha512-56/MAlX5WMsPVbOg7tAxnYvNYMMWr/QJiIp6BxVSW3JJXUVzzOn64qW8TzQyMSqSUFM2+PVI4aUHcHOzIz/1tg==}
+    dev: true
 
   /@types/yargs-parser/21.0.0:
     resolution: {integrity: sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA==}

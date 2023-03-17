@@ -1,8 +1,9 @@
-import { ConfigContext, ExpoConfig } from "@expo/config";
+import { type ConfigContext, type ExpoConfig } from "@expo/config";
 
 const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
   name: "expo",
   slug: "expo",
+  scheme: "expo",
   version: "1.0.0",
   orientation: "portrait",
   icon: "./assets/icon.png",

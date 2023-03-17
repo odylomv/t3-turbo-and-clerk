@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { UserButton, useAuth } from "@clerk/nextjs";
 
-import { RouterOutputs, api } from "~/utils/api";
+import { api, type RouterOutputs } from "~/utils/api";
 
 const PostCard: React.FC<{
   post: RouterOutputs["post"]["all"][number];

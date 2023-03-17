@@ -16,7 +16,7 @@ const SignOut = () => {
       <Button
         title="Sign Out"
         onPress={() => {
-          signOut();
+          void signOut();
         }}
       />
     </View>
