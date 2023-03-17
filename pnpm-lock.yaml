@@ -1,10 +1,5 @@
 lockfileVersion: 5.4
 
-patchedDependencies:
-  react-native@0.70.5:
-    hash: rnbco5eodjkfp6ucueusre3z4i
-    path: patches/react-native@0.70.5.patch
-
 importers:
 
   .:
@@ -14,7 +9,7 @@ importers:
       '@types/prettier': ^2.7.2
       dotenv-cli: ^7.1.0
       eslint: ^8.36.0
-      eslint-config-acme: workspace:0.0.0
+      eslint-config-acme: 0.0.0
       prettier: ^2.8.4
       prettier-plugin-tailwindcss: ^0.2.5
       turbo: ^1.8.3
