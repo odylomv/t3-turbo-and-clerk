@@ -14,11 +14,10 @@ env:
   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}}
   CLERK_SECRET_KEY: ${{secrets.CLERK_SECRET_KEY}}
 
-
 jobs:
   build-lint:
     env:
-      DATABASE_URL: file:./db.sqlite
+      DATABASE_URL: ${{secrets.DATABASE_URL}}
     runs-on: ubuntu-latest
 
     steps:
