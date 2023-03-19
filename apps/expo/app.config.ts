@@ -1,9 +1,9 @@
-import { type ConfigContext, type ExpoConfig } from '@expo/config';
+import type { ConfigContext, ExpoConfig } from '@expo/config';
 
 const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
-  name: 'expo',
-  slug: 'expo',
-  scheme: 'expo',
+  name: 'T3 Turbo',
+  slug: 'acme',
+  scheme: 'acme',
   version: '1.0.0',
   orientation: 'portrait',
   icon: './assets/icon.png',
@@ -26,10 +26,11 @@ const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
       foregroundImage: './assets/icon.png',
       backgroundColor: '#2e026d',
     },
+    package: 'your.bundle.identifier',
   },
   extra: {
     eas: {
-      projectId: 'your-project-id',
+      projectId: process.env.EXPO_PROJECT_ID,
     },
     CLERK_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
   },
