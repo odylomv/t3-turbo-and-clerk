@@ -2933,7 +2933,7 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
-      '@tanstack/react-query': 4.26.1_rn3qun46chv63cytpfol3dndvi
+      '@tanstack/react-query': 4.26.1_biqbaboplfbrettd7655fr4n2y
       '@trpc/client': 10.16.0_@trpc+server@10.16.0
       '@trpc/server': 10.16.0
       react: 18.2.0
