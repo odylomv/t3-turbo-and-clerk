@@ -9,7 +9,7 @@ importers:
       '@types/prettier': ^2.7.2
       dotenv-cli: ^7.1.0
       eslint: ^8.36.0
-      eslint-config-acme: workspace:0.0.0
+      eslint-config-acme: 0.0.0
       prettier: ^2.8.6
       prettier-plugin-tailwindcss: ^0.2.5
       turbo: ^1.8.5
@@ -41,7 +41,7 @@ importers:
       '@trpc/server': ^10.16.0
       '@types/react': ^18.0.28
       eslint: ^8.36.0
-      eslint-config-acme: workspace:0.0.0
+      eslint-config-acme: 0.0.0
       expo: ^48.0.7
       expo-auth-session: ^4.0.3
       expo-constants: ^14.2.1
@@ -113,7 +113,7 @@ importers:
       '@types/react-dom': ^18.0.11
       autoprefixer: ^10.4.14
       eslint: ^8.36.0
-      eslint-config-acme: workspace:0.0.0
+      eslint-config-acme: 0.0.0
       eslint-config-next: ^13.2.4
       next: ^13.2.4
       postcss: ^8.4.21
@@ -156,7 +156,7 @@ importers:
       '@trpc/client': ^10.16.0
       '@trpc/server': ^10.16.0
       eslint: ^8.36.0
-      eslint-config-acme: workspace:0.0.0
+      eslint-config-acme: 0.0.0
       superjson: ^1.12.2
       typescript: ^5.0.2
       zod: ^3.21.4
@@ -2933,7 +2933,7 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
-      '@tanstack/react-query': 4.26.1_biqbaboplfbrettd7655fr4n2y
+      '@tanstack/react-query': 4.26.1_rn3qun46chv63cytpfol3dndvi
       '@trpc/client': 10.16.0_@trpc+server@10.16.0
       '@trpc/server': 10.16.0
       react: 18.2.0
