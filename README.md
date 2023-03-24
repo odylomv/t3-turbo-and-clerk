@@ -1,6 +1,6 @@
-[![CI](https://github.com/odylomv/t3-turbo-and-clerk/actions/workflows/ci.yml/badge.svg)](https://github.com/odylomv/t3-turbo-and-clerk/actions/workflows/ci.yml)
-
 # Create T3 Turbo with Clerk Authentication
+
+[![CI](https://github.com/odylomv/t3-turbo-and-clerk/actions/workflows/ci.yml/badge.svg)](https://github.com/odylomv/t3-turbo-and-clerk/actions/workflows/ci.yml)
 
 ## Clerk Dashboard Setup
 
@@ -12,7 +12,7 @@ It uses [Turborepo](https://turborepo.org/) and contains:
 
 ## Code Layout
 
-```
+```text
 .github
   └─ workflows
         └─ CI with pnpm cache setup
@@ -69,9 +69,9 @@ pnpm db-push
 1. Make sure you have XCode and XCommand Line Tools installed [as shown on expo docs](https://docs.expo.dev/workflow/ios-simulator/).
 2. Change the `dev` script at `apps/expo/package.json` to open the iOS simulator.
 
-```diff
-+  "dev": "expo start --ios",
-```
+   ```diff
+   +  "dev": "expo start --ios",
+   ```
 
 3. Run `pnpm dev` at the project root folder.
 
@@ -80,9 +80,9 @@ pnpm db-push
 1. Install Android Studio tools [as shown on expo docs](https://docs.expo.dev/workflow/android-studio-emulator/).
 2. Change the `dev` script at `apps/expo/package.json` to open the Android emulator.
 
-```diff
-+  "dev": "expo start --android",
-```
+   ```diff
+   +  "dev": "expo start --android",
+   ```
 
 3. Run `pnpm dev` at the project root folder.
 
@@ -100,9 +100,9 @@ Let's deploy the Next.js application to [Vercel](https://vercel.com/). If you ha
 
 1. Create a new project on Vercel, select the `apps/nextjs` folder as the root directory and apply the following build settings:
 
-<img width="927" alt="Vercel deployment settings" src="https://user-images.githubusercontent.com/11340449/201974887-b6403a32-5570-4ce6-b146-c486c0dbd244.png">
+   ![Vercel deployment settings](https://user-images.githubusercontent.com/11340449/201974887-b6403a32-5570-4ce6-b146-c486c0dbd244.png)
 
-> The install command filters out the expo package and saves a few second (and cache size) of dependency installation. The build command makes us build the application using Turbo.
+   > The install command filters out the expo package and saves a few second (and cache size) of dependency installation. The build command makes us build the application using Turbo.
 
 2. Add your `DATABASE_URL`,`NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY` environment variable.
 
@@ -128,16 +128,16 @@ Deploying your Expo application works slightly differently compared to Next.js o
 
 2. After the initial setup, you can create your first build. You can build for Android and iOS platforms and use different [**eas.json** build profiles](https://docs.expo.dev/build-reference/eas-json/) to create production builds or development, or test builds. Let's make a production build for iOS.
 
-   ```
-   $ eas build --platform ios --profile production
+   ```text
+   eas build --platform ios --profile production
    ```
 
    > If you don't specify the `--profile` flag, EAS uses the `production` profile by default.
 
 3. Now that you have your first production build, you can submit this to the stores. [EAS Submit](https://docs.expo.dev/submit/introduction/) can help you send the build to the stores.
 
-   ```
-   $ eas submit --platform ios --latest
+   ```text
+   eas submit --platform ios --latest
    ```
 
    > You can also combine build and submit in a single command, using `eas build ... --auto-submit`.
@@ -191,8 +191,8 @@ Deploying your Expo application works slightly differently compared to Next.js o
 8. Now that everything is ready for updates, let's create a new update for `production` builds. With the `--auto` flag, EAS Update uses your current git branch name and commit message for this update. See [How EAS Update works](https://docs.expo.dev/eas-update/how-eas-update-works/#publishing-an-update) for more information.
 
    ```bash
-   $ cd apps/expo
-   $ eas update --auto
+   cd apps/expo
+   eas update --auto
    ```
 
    > Your OTA (Over The Air) updates must always follow the app store's rules. You can't change your app's primary functionality without getting app store approval. But this is a fast way to update your app for minor changes and bug fixes.
