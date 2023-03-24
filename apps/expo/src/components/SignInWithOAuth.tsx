@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View } from 'react-native';
+import { Button } from 'react-native';
 import * as AuthSession from 'expo-auth-session';
 import { useSignIn, useSignUp } from '@clerk/clerk-expo';
 
@@ -67,11 +67,7 @@ const SignInWithOAuth = () => {
     }
   };
 
-  return (
-    <View className="rounded-lg border-2 border-gray-500 p-4">
-      <Button title="Sign in with Discord" onPress={() => void handleSignInWithDiscordPress()} />
-    </View>
-  );
+  return <Button title="Sign in with Discord" onPress={() => void handleSignInWithDiscordPress()} />;
 };
 
 export default SignInWithOAuth;

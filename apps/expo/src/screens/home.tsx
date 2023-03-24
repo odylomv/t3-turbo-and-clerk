@@ -3,62 +3,71 @@ import { Button, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useAuth } from '@clerk/clerk-expo';
 import { FlashList } from '@shopify/flash-list';
-import type { inferProcedureOutput } from '@trpc/server';
 
-import type { AppRouter } from '@acme/api';
-
-import { api } from '../utils/api';
+import { api, type RouterOutputs } from '../utils/api';
 
 const SignOut = () => {
   const { signOut } = useAuth();
-  return (
-    <View className="rounded-lg border-2 border-gray-500 p-4">
-      <Button
-        title="Sign Out"
-        onPress={() => {
-          void signOut();
-        }}
-      />
-    </View>
-  );
+  return <Button onPress={() => void signOut()} title="Sign Out" />;
 };
 
 const PostCard: React.FC<{
-  post: inferProcedureOutput<AppRouter['post']['all']>[number];
-}> = ({ post }) => {
+  post: RouterOutputs['post']['all'][number];
+  onDelete: () => void;
+}> = ({ post, onDelete }) => {
   return (
-    <View className="rounded-lg border-2 border-gray-500 p-4">
-      <Text className="text-xl font-semibold text-[#cc66ff]">{post.title}</Text>
-      <Text className="text-white">{post.content}</Text>
+    <View className="flex flex-row rounded-lg bg-white/10 p-4">
+      <View className="flex-grow">
+        <Text className="text-xl font-semibold text-pink-400">{post.title}</Text>
+        <Text className="mt-2 text-white">{post.content}</Text>
+      </View>
+      <TouchableOpacity onPress={onDelete}>
+        <Text className="font-bold uppercase text-pink-400">Delete</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const CreatePost: React.FC = () => {
   const utils = api.useContext();
-  const { mutate } = api.post.create.useMutation({
+
+  const [title, setTitle] = React.useState('');
+  const [content, setContent] = React.useState('');
+
+  const { mutate, error } = api.post.create.useMutation({
     async onSuccess() {
+      setTitle('');
+      setContent('');
       await utils.post.all.invalidate();
     },
   });
 
-  const [title, onChangeTitle] = React.useState('');
-  const [content, onChangeContent] = React.useState('');
-
   return (
-    <View className="flex flex-col border-t-2 border-gray-500 p-4">
+    <View className="mt-4">
       <TextInput
-        className="mb-2 rounded border-2 border-gray-500 p-2 text-white"
-        onChangeText={onChangeTitle}
+        className="mb-2 rounded bg-white/10 p-2 text-white"
+        placeholderTextColor="rgba(255, 255, 255, 0.5)"
+        value={title}
+        onChangeText={setTitle}
         placeholder="Title"
       />
+      {error?.data?.zodError?.fieldErrors.title && (
+        <Text className="mb-2 text-red-500">{error.data.zodError.fieldErrors.title}</Text>
+      )}
+
       <TextInput
-        className="mb-2 rounded border-2 border-gray-500 p-2 text-white"
-        onChangeText={onChangeContent}
+        className="mb-2 rounded bg-white/10 p-2 text-white"
+        placeholderTextColor="rgba(255, 255, 255, 0.5)"
+        value={content}
+        onChangeText={setContent}
         placeholder="Content"
       />
+      {error?.data?.zodError?.fieldErrors.content && (
+        <Text className="mb-2 text-red-500">{error.data.zodError.fieldErrors.content}</Text>
+      )}
+
       <TouchableOpacity
-        className="rounded bg-[#cc66ff] p-2"
+        className="rounded bg-pink-400 p-2"
         onPress={() => {
           mutate({
             title,
@@ -74,19 +83,30 @@ const CreatePost: React.FC = () => {
 
 export const HomeScreen = () => {
   const postQuery = api.post.all.useQuery();
+
+  const deletePostMutation = api.post.delete.useMutation({
+    onSettled: () => postQuery.refetch(),
+  });
+
   const [showPost, setShowPost] = React.useState<string | null>(null);
 
   return (
-    <SafeAreaView className="bg-[#2e026d] bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-      <View className="h-full w-full p-4">
+    <SafeAreaView className="bg-[#1F104A]">
+      <View className="flex h-full w-full p-4">
         <Text className="mx-auto pb-2 text-5xl font-bold text-white">
-          Create <Text className="text-[#cc66ff]">T3</Text> Turbo
+          Create <Text className="text-pink-400">T3</Text> Turbo
         </Text>
+
+        <View className="pb-2">
+          <SignOut />
+        </View>
+
+        <Button onPress={() => void postQuery.refetch()} title="Refresh posts" color={'#f472b6'} />
 
         <View className="py-2">
           {showPost ? (
             <Text className="text-white">
-              <Text className="font-semibold">Selected post:</Text>
+              <Text className="font-semibold">Selected post: </Text>
               {showPost}
             </Text>
           ) : (
@@ -94,19 +114,20 @@ export const HomeScreen = () => {
           )}
         </View>
 
-        <FlashList
-          data={postQuery.data}
-          estimatedItemSize={20}
-          ItemSeparatorComponent={() => <View className="h-2" />}
-          renderItem={p => (
-            <TouchableOpacity onPress={() => setShowPost(p.item.id)}>
-              <PostCard post={p.item} />
-            </TouchableOpacity>
-          )}
-        />
+        <View className="flex-grow px-2">
+          <FlashList
+            data={postQuery.data}
+            estimatedItemSize={20}
+            ItemSeparatorComponent={() => <View className="h-2" />}
+            renderItem={p => (
+              <TouchableOpacity onPress={() => setShowPost(p.item.id)}>
+                <PostCard post={p.item} onDelete={() => deletePostMutation.mutate(p.item.id)} />
+              </TouchableOpacity>
+            )}
+          />
+        </View>
 
         <CreatePost />
-        <SignOut />
       </View>
     </SafeAreaView>
   );

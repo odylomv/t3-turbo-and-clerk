@@ -15,11 +15,11 @@ export const App = () => {
       publishableKey={Constants.expoConfig?.extra?.CLERK_PUBLISHABLE_KEY as string}
       tokenCache={tokenCache}
     >
+      <StatusBar />
       <SignedIn>
         <TRPCProvider>
           <SafeAreaProvider>
             <HomeScreen />
-            <StatusBar />
           </SafeAreaProvider>
         </TRPCProvider>
       </SignedIn>
