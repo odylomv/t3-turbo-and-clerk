@@ -163,7 +163,7 @@ Deploying your Expo application works slightly differently compared to Next.js o
 
    Then, in the [Clerk Dashboard](https://dashboard.clerk.dev/), go to **User & Authentication > Social Connections > Settings** and add your app's scheme and redirect URL to the **Redirect URLs** field:
 
-   ```txt
+   ```text
    your-app-scheme://oauth-native-callback
    ```
 
