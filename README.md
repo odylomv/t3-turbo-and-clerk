@@ -20,9 +20,15 @@ It uses [Turborepo](https://turborepo.org/) and contains:
   └─ Recommended extensions and settings for VSCode users
 apps
   ├─ expo
+  |   ├─ Expo SDK 48
+  |   ├─ React Native using React 18
+  |   ├─ Navigation using Expo Router
+  |   ├─ Tailwind using Nativewind
+  |   └─ Typesafe API calls using tRPC
   └─ next.js
       ├─ Next.js 13
       ├─ React 18
+      ├─ Tailwind CSS
       └─ E2E Typesafe API Server & Client
 packages
  ├─ api
@@ -54,18 +60,9 @@ cp .env.example .env
 pnpm db-push
 ```
 
-### Configure Expo app
-
-Expo doesn't use the .env for the publishable key, so you will need to go to `apps/expo/app.config.ts` and add it there.
-
-```
-const CLERK_PUBLISHABLE_KEY = "your-clerk-publishable-key";
-
-```
-
 ### Configure Expo `dev`-script
 
-> **Note:** If you want to use a physical phone with Expo Go, just run `pnpm dev` and scan the QR-code.
+> **Note:** If you want to use a physical phone with Expo Go, just run `pnpm --filter expo start` and scan the QR-code.
 
 #### Use iOS Simulator
 
