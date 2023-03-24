@@ -1,4 +1,4 @@
-[![CI](https://github.com/perkinsjr/t3-turbo-and-clerk/actions/workflows/ci.yml/badge.svg)](https://github.com/perkinsjr/t3-turbo-and-clerk/actions/workflows/ci.yml)
+[![CI](https://github.com/odylomv/t3-turbo-and-clerk/actions/workflows/ci.yml/badge.svg)](https://github.com/odylomv/t3-turbo-and-clerk/actions/workflows/ci.yml)
 
 # Create T3 Turbo with Clerk Authentication
 
