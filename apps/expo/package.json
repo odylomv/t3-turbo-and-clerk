@@ -39,13 +39,13 @@
     "superjson": "^1.12.2"
   },
   "devDependencies": {
-    "@acme/api": "^0.1.0",
-    "@acme/eslint-config": "^0.1.0",
-    "@acme/tailwind-config": "^0.1.0",
+    "@acme/api": "*",
+    "@acme/eslint-config": "*",
+    "@acme/tailwind-config": "*",
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
     "@babel/runtime": "^7.21.0",
-    "@types/react": "^18.0.28",
+    "@types/react": "^18.0.29",
     "eslint": "^8.36.0",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.7",

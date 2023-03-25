@@ -11,14 +11,14 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@acme/db": "^0.1.0",
+    "@acme/db": "*",
     "@trpc/client": "^10.18.0",
     "@trpc/server": "^10.18.0",
     "superjson": "^1.12.2",
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@acme/eslint-config": "^0.1.0",
+    "@acme/eslint-config": "*",
     "eslint": "^8.36.0",
     "typescript": "^5.0.2"
   }
