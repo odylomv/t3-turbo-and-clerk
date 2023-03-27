@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Next.js",
+      "type": "shell",
+      "command": "pnpm --filter nextjs dev",
+      "presentation": {
+        "group": "apps",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Start Expo",
+      "type": "shell",
+      "command": "pnpm --filter expo start",
+      "presentation": {
+        "group": "apps",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Start Next.js + Expo",
+      "dependsOn": ["Start Next.js", "Start Expo"],
+      "problemMatcher": []
+    }
+  ]
+}
