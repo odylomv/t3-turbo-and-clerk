@@ -16,9 +16,6 @@ importers:
       '@types/prettier':
         specifier: ^2.7.2
         version: 2.7.2
-      dotenv-cli:
-        specifier: ^7.1.0
-        version: 7.1.0
       eslint:
         specifier: ^8.36.0
         version: 8.36.0
@@ -125,6 +122,9 @@ importers:
       '@types/react':
         specifier: ^18.0.30
         version: 18.0.30
+      dotenv-cli:
+        specifier: ^7.1.0
+        version: 7.1.0
       eslint:
         specifier: ^8.36.0
         version: 8.36.0
@@ -198,6 +198,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.14
         version: 10.4.14(postcss@8.4.21)
+      dotenv-cli:
+        specifier: ^7.1.0
+        version: 7.1.0
       eslint:
         specifier: ^8.36.0
         version: 8.36.0
@@ -291,6 +294,9 @@ importers:
         specifier: ^4.11.0
         version: 4.11.0(prisma@4.11.0)
     devDependencies:
+      dotenv-cli:
+        specifier: ^7.1.0
+        version: 7.1.0
       prisma:
         specifier: ^4.11.0
         version: 4.11.0
@@ -4715,17 +4721,17 @@ packages:
       dotenv: 16.0.3
       dotenv-expand: 10.0.0
       minimist: 1.2.8
-    dev: false
+    dev: true
 
   /dotenv-expand@10.0.0:
     resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
     engines: {node: '>=12'}
-    dev: false
+    dev: true
 
   /dotenv@16.0.3:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
     engines: {node: '>=12'}
-    dev: false
+    dev: true
 
   /duplexer3@0.1.5:
     resolution: {integrity: sha512-1A8za6ws41LQgv9HrE/66jyC5yuSjQ3L/KOpFtoBilsAK2iA2wuS5rTt1OCzIvtS2V7nVmedsUU+DGRcjBmOYA==}

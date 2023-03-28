@@ -3,15 +3,15 @@
   "version": "0.1.0",
   "main": "index.ts",
   "scripts": {
-    "with-env": "dotenv -e ../../.env --",
-    "start": "pnpm with-env expo start",
-    "dev": "pnpm with-env expo start --android",
-    "clean": "git clean -xdf .expo .turbo node_modules",
     "android": "pnpm with-env expo start --android",
+    "clean": "git clean -xdf .expo .turbo node_modules",
+    "dev": "pnpm with-env expo start --android",
     "ios": "pnpm with-env expo start --ios",
-    "web": "pnpm with-env expo start --web",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
+    "start": "pnpm with-env expo start",
+    "web": "pnpm with-env expo start --web",
+    "with-env": "dotenv -e ../../.env --",
     "FIXME(no-work):type-check": "tsc --noEmit"
   },
   "dependencies": {
@@ -46,6 +46,7 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/runtime": "^7.21.0",
     "@types/react": "^18.0.30",
+    "dotenv-cli": "^7.1.0",
     "eslint": "^8.36.0",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.7",
